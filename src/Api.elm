@@ -3,15 +3,15 @@ module Api exposing (fetchRecipes)
 import Http
 import Json.Decode as Decode
 import Msg exposing (Msg(..))
+import Model exposing (Recipe)
 
-type alias Recipe =
-    { label : String }
-
-recipeDecoder : Decode.Decoder String
+recipeDecoder : Decode.Decoder Recipe
 recipeDecoder =
-    Decode.field "recipe" (Decode.field "label" Decode.string)
+    Decode.map2 Recipe
+        (Decode.field "recipe" (Decode.field "label" Decode.string))
+        (Decode.field "recipe" (Decode.field "image" Decode.string))
 
-recipesDecoder : Decode.Decoder (List String)
+recipesDecoder : Decode.Decoder (List Recipe)
 recipesDecoder =
     Decode.field "hits" (Decode.list recipeDecoder)
 

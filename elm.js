@@ -6131,11 +6131,22 @@ var $elm$http$Http$get = function (r) {
 };
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $elm$json$Json$Decode$list = _Json_decodeList;
+var $author$project$Model$Recipe = F2(
+	function (label, image) {
+		return {image: image, label: label};
+	});
 var $elm$json$Json$Decode$string = _Json_decodeString;
-var $author$project$Api$recipeDecoder = A2(
-	$elm$json$Json$Decode$field,
-	'recipe',
-	A2($elm$json$Json$Decode$field, 'label', $elm$json$Json$Decode$string));
+var $author$project$Api$recipeDecoder = A3(
+	$elm$json$Json$Decode$map2,
+	$author$project$Model$Recipe,
+	A2(
+		$elm$json$Json$Decode$field,
+		'recipe',
+		A2($elm$json$Json$Decode$field, 'label', $elm$json$Json$Decode$string)),
+	A2(
+		$elm$json$Json$Decode$field,
+		'recipe',
+		A2($elm$json$Json$Decode$field, 'image', $elm$json$Json$Decode$string)));
 var $author$project$Api$recipesDecoder = A2(
 	$elm$json$Json$Decode$field,
 	'hits',
@@ -6239,7 +6250,14 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$li = _VirtualDom_node('li');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$View$recipeItem = function (recipe) {
@@ -6248,7 +6266,14 @@ var $author$project$View$recipeItem = function (recipe) {
 		_List_Nil,
 		_List_fromArray(
 			[
-				$elm$html$Html$text(recipe)
+				A2(
+				$elm$html$Html$img,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$src(recipe.image)
+					]),
+				_List_Nil),
+				$elm$html$Html$text(recipe.label)
 			]));
 };
 var $elm$html$Html$ul = _VirtualDom_node('ul');

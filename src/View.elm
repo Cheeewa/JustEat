@@ -1,9 +1,9 @@
 module View exposing (view)
 
-import Html exposing (Html, div, input, button, text, ul, li)
-import Html.Attributes exposing (placeholder, value)
+import Html exposing (Html, div, input, button, text, ul, li, img)
+import Html.Attributes exposing (placeholder, value, src)
 import Html.Events exposing (onClick, onInput)
-import Model exposing (Model)
+import Model exposing (Model, Recipe)
 import Msg exposing (Msg(..))
 
 view : Model -> Html Msg
@@ -14,6 +14,9 @@ view model =
         , ul [] (List.map recipeItem model.recipes)
         ]
 
-recipeItem : String -> Html Msg
+recipeItem : Recipe -> Html Msg
 recipeItem recipe =
-    li [] [ text recipe ]
+    li []
+        [ img [ src recipe.image ] []
+        , text recipe.label
+        ]

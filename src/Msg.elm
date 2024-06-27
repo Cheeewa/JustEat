@@ -1,7 +1,9 @@
 module Msg exposing (Msg(..))
+
 import Http
+import Model exposing (Recipe)
 
 type Msg
     = UpdateIngredients String
     | FetchRecipes
-    | ReceiveRecipes (Result Http.Error (List String))
+    | ReceiveRecipes (Result Http.Error (List Recipe))
