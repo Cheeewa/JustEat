@@ -6201,7 +6201,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -6278,6 +6277,33 @@ var $author$project$View$recipeItem = function (recipe) {
 				$elm$html$Html$text(recipe.label)
 			]));
 };
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$section = _VirtualDom_node('section');
+var $author$project$View$titleSection = A2(
+	$elm$html$Html$section,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('section')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$h1,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('title')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('WELCOME TO JUSTEAT')
+						]))
+				]))
+		]));
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$View$view = function (model) {
@@ -6286,16 +6312,7 @@ var $author$project$View$view = function (model) {
 		_List_Nil,
 		_List_fromArray(
 			[
-				A2(
-				$elm$html$Html$h1,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('title')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('WELCOME TO JUST EAT')
-					])),
+				$author$project$View$titleSection,
 				A2(
 				$elm$html$Html$input,
 				_List_fromArray(
@@ -6309,6 +6326,7 @@ var $author$project$View$view = function (model) {
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
+						$elm$html$Html$Attributes$class('button is-primary'),
 						$elm$html$Html$Events$onClick($author$project$Msg$FetchRecipes)
 					]),
 				_List_fromArray(
