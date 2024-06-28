@@ -9,11 +9,11 @@ import Html exposing (h1)
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [class "hero has-text-centered"]
         [ titleSection
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
         , button [ class "button is-primary" ] [ text "Get Recipes" ]
-        , ul [class "has-text-centered"] (List.map recipeItem model.recipes)
+        , ul [] (List.map recipeItem model.recipes)
         ]
 
 recipeItem : Recipe -> Html Msg
@@ -28,7 +28,7 @@ recipeItem recipe =
 
 titleSection : Html Msg
 titleSection =
-    section [class "section has-text-centered"]
+    section [class "section"]
         [div[]
             [h1 [class "title"][text "WELCOME TO JUSTEAT"]]
         ]
