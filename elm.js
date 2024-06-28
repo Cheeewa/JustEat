@@ -5334,7 +5334,7 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Model$init = {ingredients: '', recipes: _List_Nil};
+var $author$project$Model$init = {ingredients: '', recipes: _List_Nil, selectedRecipe: $elm$core$Maybe$Nothing};
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -6131,26 +6131,26 @@ var $elm$http$Http$get = function (r) {
 };
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $elm$json$Json$Decode$list = _Json_decodeList;
-var $author$project$Model$Recipe = F2(
-	function (label, image) {
-		return {image: image, label: label};
+var $author$project$Model$Recipe = F3(
+	function (label, thumbnail, ingredients) {
+		return {ingredients: ingredients, label: label, thumbnail: thumbnail};
 	});
+var $elm$json$Json$Decode$map3 = _Json_map3;
 var $elm$json$Json$Decode$string = _Json_decodeString;
-var $author$project$Api$recipeDecoder = A3(
-	$elm$json$Json$Decode$map2,
+var $author$project$Api$recipeDecoder = A4(
+	$elm$json$Json$Decode$map3,
 	$author$project$Model$Recipe,
+	A2($elm$json$Json$Decode$field, 'label', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'image', $elm$json$Json$Decode$string),
 	A2(
 		$elm$json$Json$Decode$field,
-		'recipe',
-		A2($elm$json$Json$Decode$field, 'label', $elm$json$Json$Decode$string)),
-	A2(
-		$elm$json$Json$Decode$field,
-		'recipe',
-		A2($elm$json$Json$Decode$field, 'image', $elm$json$Json$Decode$string)));
+		'ingredientLines',
+		$elm$json$Json$Decode$list($elm$json$Json$Decode$string)));
 var $author$project$Api$recipesDecoder = A2(
 	$elm$json$Json$Decode$field,
 	'hits',
-	$elm$json$Json$Decode$list($author$project$Api$recipeDecoder));
+	$elm$json$Json$Decode$list(
+		A2($elm$json$Json$Decode$field, 'recipe', $author$project$Api$recipeDecoder)));
 var $author$project$Api$fetchRecipes = function (ingredients) {
 	var url = 'https://api.edamam.com/search?q=' + (ingredients + '&app_id=2bd6b567&app_key=f4929fb1d1b798798f27bef6e8bf956e');
 	return $elm$http$Http$get(
@@ -6173,7 +6173,7 @@ var $author$project$Update$update = F2(
 				return _Utils_Tuple2(
 					model,
 					$author$project$Api$fetchRecipes(model.ingredients));
-			default:
+			case 'ReceiveRecipes':
 				if (msg.a.$ === 'Ok') {
 					var recipes = msg.a.a;
 					return _Utils_Tuple2(
@@ -6184,14 +6184,43 @@ var $author$project$Update$update = F2(
 				} else {
 					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 				}
+			case 'SelectRecipe':
+				var recipe = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							selectedRecipe: $elm$core$Maybe$Just(recipe)
+						}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{selectedRecipe: $elm$core$Maybe$Nothing}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Msg$DeselectRecipe = {$: 'DeselectRecipe'};
 var $author$project$Msg$FetchRecipes = {$: 'FetchRecipes'};
 var $author$project$Msg$UpdateIngredients = function (a) {
 	return {$: 'UpdateIngredients', a: a};
 };
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$View$ingredientItem = function (ingredient) {
+	return A2(
+		$elm$html$Html$li,
+		_List_Nil,
+		_List_fromArray(
+			[
+				$elm$html$Html$text(ingredient)
+			]));
+};
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -6250,32 +6279,51 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$Msg$SelectRecipe = function (a) {
+	return {$: 'SelectRecipe', a: a};
+};
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
 var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$View$recipeItem = function (recipe) {
-	return A2(
-		$elm$html$Html$li,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$img,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$src(recipe.image)
-					]),
-				_List_Nil),
-				$elm$html$Html$text(recipe.label)
-			]));
-};
+var $author$project$View$recipeItem = F2(
+	function (model, recipe) {
+		return A2(
+			$elm$html$Html$li,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('#'),
+							$elm$html$Html$Events$onClick(
+							$author$project$Msg$SelectRecipe(recipe))
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$img,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$src(recipe.thumbnail)
+								]),
+							_List_Nil),
+							$elm$html$Html$text(recipe.label)
+						]))
+				]));
+	});
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$View$view = function (model) {
@@ -6303,10 +6351,47 @@ var $author$project$View$view = function (model) {
 					[
 						$elm$html$Html$text('Get Recipes')
 					])),
-				A2(
-				$elm$html$Html$ul,
-				_List_Nil,
-				A2($elm$core$List$map, $author$project$View$recipeItem, model.recipes))
+				function () {
+				var _v0 = model.selectedRecipe;
+				if (_v0.$ === 'Nothing') {
+					return A2(
+						$elm$html$Html$ul,
+						_List_Nil,
+						A2(
+							$elm$core$List$map,
+							$author$project$View$recipeItem(model),
+							model.recipes));
+				} else {
+					var recipe = _v0.a;
+					return A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onClick($author$project$Msg$DeselectRecipe)
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Back to Recipes')
+									])),
+								A2(
+								$elm$html$Html$h2,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text(recipe.label)
+									])),
+								A2(
+								$elm$html$Html$ul,
+								_List_Nil,
+								A2($elm$core$List$map, $author$project$View$ingredientItem, recipe.ingredients))
+							]));
+				}
+			}()
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

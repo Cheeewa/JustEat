@@ -13,8 +13,15 @@ update msg model =
         FetchRecipes ->
             ( model, Api.fetchRecipes model.ingredients )
 
+
         ReceiveRecipes (Ok recipes) ->
             ( { model | recipes = recipes }, Cmd.none )
 
         ReceiveRecipes (Err _) ->
             ( model, Cmd.none )
+
+        SelectRecipe recipe ->
+            ( { model | selectedRecipe = Just recipe }, Cmd.none )
+
+        DeselectRecipe ->
+            ( { model | selectedRecipe = Nothing }, Cmd.none )
