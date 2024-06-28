@@ -9,10 +9,10 @@ import Html exposing (h1)
 
 view : Model -> Html Msg
 view model =
-    div [class "hero has-text-centered"]
+    div [class "has-text-centered"]
         [ titleSection
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ class "button is-primary" ] [ text "Get Recipes" ]
+        , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
         , ul [] (List.map recipeItem model.recipes)
         ]
 
@@ -22,9 +22,6 @@ recipeItem recipe =
         [ img [ src recipe.image ] []
         , text recipe.label
         ]
-
-
-
 
 titleSection : Html Msg
 titleSection =
