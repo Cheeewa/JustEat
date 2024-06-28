@@ -9,7 +9,8 @@ import Msg exposing (Msg(..))
 view : Model -> Html Msg
 view model =
     div []
-        [ input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
+        [ titelsection
+        , input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
         , button [ onClick FetchRecipes ] [ text "Get Recipes" ]
         , case model.selectedRecipe of
             Nothing ->
