@@ -9,4 +9,7 @@ import Msg exposing (Msg)
 
 main : Program () Model Msg
 main =
-    Browser.element { init = \_ -> ( Model.init, Cmd.none ), update = update, view = view, subscriptions = \_ -> Sub.none }
+    Browser.element { init = \_ -> ( Model.init, Cmd.none ), 
+    update = update, 
+    view = view, 
+    subscriptions = \_ -> Sub.none }
