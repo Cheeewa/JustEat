@@ -2,15 +2,20 @@ module Model exposing (Model, Recipe, init)
 
 type alias Recipe =
     { label : String
-    , image : String
+    , thumbnail : String
+    , ingredients : List String
     }
 
 type alias Model =
     { ingredients : String
     , recipes : List Recipe
+    , selectedRecipe : Maybe Recipe
     }
 
 init : Model
 init =
     { ingredients = ""
-    , recipes = [] }
+    , recipes = []
+    , selectedRecipe = Nothing }
+
+
