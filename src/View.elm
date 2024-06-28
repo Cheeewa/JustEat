@@ -12,8 +12,8 @@ view model =
     div []
         [ titleSection
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ class "button is-primary",onClick FetchRecipes ] [ text "Get Recipes" ]
-        , ul [] (List.map recipeItem model.recipes)
+        , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
+        , ul [class "has-text-centered"] (List.map recipeItem model.recipes)
         ]
 
 recipeItem : Recipe -> Html Msg
