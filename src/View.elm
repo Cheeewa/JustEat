@@ -25,7 +25,7 @@ recipeItem recipe =
 
 titleSection : Html Msg
 titleSection =
-    section [class "section"]
+    section [class "section has-text-centered"]
         [div[]
             [h1 [class "title"][text "WELCOME TO JUSTEAT"]]
         ]

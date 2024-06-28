@@ -6283,7 +6283,7 @@ var $author$project$View$titleSection = A2(
 	$elm$html$Html$section,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('section')
+			$elm$html$Html$Attributes$class('section has-text-centered')
 		]),
 	_List_fromArray(
 		[
