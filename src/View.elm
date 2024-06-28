@@ -12,7 +12,7 @@ view model =
     div []
         [ titleSection
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ class "button is-primary has-text-centered", onClick FetchRecipes ] [ text "Get Recipes" ]
+        , button [ class "button is-primary", class "has-text-centered", onClick FetchRecipes ] [ text "Get Recipes" ]
         , ul [class "has-text-centered"] (List.map recipeItem model.recipes)
         ]
 
