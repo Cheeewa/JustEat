@@ -10,9 +10,9 @@ import Html exposing (h1)
 view : Model -> Html Msg
 view model =
     div []
-        [ h1[class "title"][text "WELCOME TO JUST EAT"]
+        [ titleSection
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ onClick FetchRecipes ] [ text "Get Recipes" ]
+        , button [ class "button is-primary",onClick FetchRecipes ] [ text "Get Recipes" ]
         , ul [] (List.map recipeItem model.recipes)
         ]
 
@@ -21,4 +21,11 @@ recipeItem recipe =
     li []
         [ img [ src recipe.image ] []
         , text recipe.label
+        ]
+
+titleSection : Html Msg
+titleSection =
+    section [class "section"]
+        [div[]
+            [h1 [class "title"][text "WELCOME TO JUSTEAT"]]
         ]
