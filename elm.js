@@ -6335,7 +6335,10 @@ var $author$project$View$view = function (model) {
 					])),
 				A2(
 				$elm$html$Html$ul,
-				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('has-text-centered')
+					]),
 				A2($elm$core$List$map, $author$project$View$recipeItem, model.recipes))
 			]));
 };
