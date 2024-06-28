@@ -1,12 +1,12 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html)
+import Html exposing (..)
 import Model exposing (Model)
 import Update exposing (update)
 import View exposing (view)
 import Msg exposing (Msg)
---import Dict exposing (update)
+--import Dict exposing (..) 
 
 main : Program () Model Msg
 main =
