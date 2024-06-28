@@ -6285,6 +6285,13 @@ var $author$project$View$view = function (model) {
 		_List_fromArray(
 			[
 				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('WELCOME TO JUST EAT')
+					])),
+				A2(
 				$elm$html$Html$input,
 				_List_fromArray(
 					[
