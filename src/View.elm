@@ -5,11 +5,12 @@ import Html.Attributes exposing (placeholder, value, src)
 import Html.Events exposing (onClick, onInput)
 import Model exposing (Model, Recipe)
 import Msg exposing (Msg(..))
+import Html exposing (h1)
 
 view : Model -> Html Msg
 view model =
     div []
-        [ div[][ text "WELCOME TO JUST EAT"] 
+        [ h1[][text "WELCOME TO JUST EAT"]
         ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
         , button [ onClick FetchRecipes ] [ text "Get Recipes" ]
         , ul [] (List.map recipeItem model.recipes)
