@@ -6,7 +6,13 @@ import Model exposing (Model)
 import Update exposing (update)
 import View exposing (view)
 import Msg exposing (Msg)
+--import Dict exposing (update)
 
 main : Program () Model Msg
 main =
-    Browser.element { init = \_ -> ( Model.init, Cmd.none ), update = update, view = view, subscriptions = \_ -> Sub.none }
+    Browser.element
+        { init = \_ -> (Model.init, Cmd.none)
+        , update = update
+        , view = view
+        , subscriptions = \_ -> Sub.none
+        }
