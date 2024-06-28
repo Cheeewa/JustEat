@@ -6186,7 +6186,6 @@ var $author$project$Update$update = F2(
 				}
 		}
 	});
-var $author$project$Msg$FetchRecipes = {$: 'FetchRecipes'};
 var $author$project$Msg$UpdateIngredients = function (a) {
 	return {$: 'UpdateIngredients', a: a};
 };
@@ -6202,29 +6201,13 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $elm$html$Html$Events$alwaysStop = function (x) {
 	return _Utils_Tuple2(x, true);
 };
 var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
 	return {$: 'MayStopPropagation', a: a};
 };
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$stopPropagationOn = F2(
 	function (event, decoder) {
 		return A2(
@@ -6283,7 +6266,7 @@ var $author$project$View$titleSection = A2(
 	$elm$html$Html$section,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('section has-text-centered')
+			$elm$html$Html$Attributes$class('section')
 		]),
 	_List_fromArray(
 		[
@@ -6309,7 +6292,10 @@ var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('
 var $author$project$View$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('hero has-text-centered')
+			]),
 		_List_fromArray(
 			[
 				$author$project$View$titleSection,
@@ -6326,8 +6312,7 @@ var $author$project$View$view = function (model) {
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('button is-primary'),
-						$elm$html$Html$Events$onClick($author$project$Msg$FetchRecipes)
+						$elm$html$Html$Attributes$class('button is-primary')
 					]),
 				_List_fromArray(
 					[
@@ -6335,10 +6320,7 @@ var $author$project$View$view = function (model) {
 					])),
 				A2(
 				$elm$html$Html$ul,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('has-text-centered')
-					]),
+				_List_Nil,
 				A2($elm$core$List$map, $author$project$View$recipeItem, model.recipes))
 			]));
 };
