@@ -17,7 +17,7 @@ view model =
 
             Just recipe ->
                 div []
-                    [ button [ onClick DeselectRecipe ] [ text "Back to Recipes" ]
+                    [ button [ class "button is-primary",onClick DeselectRecipe ] [ text "Back to Recipes" ]
                     , h2 [] [ text recipe.label ]
                     , ul [] (List.map ingredientItem recipe.ingredients)
                     ]
