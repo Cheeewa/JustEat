@@ -9,7 +9,7 @@ import Msg exposing (Msg(..))
 view : Model -> Html Msg
 view model =
     div []
-        [ titelsection
+        [ titlesection
         , input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
         , button [ onClick FetchRecipes ] [ text "Get Recipes" ]
         , case model.selectedRecipe of
@@ -41,5 +41,6 @@ titelsection : Html Msg
 titelsection = 
     section [class "section"]
     [div[]
-        [h1[class "title"][text "WELCOME TO JUSTEAT"]]
+        [h1[class "title"]
+        [text "WELCOME TO JUSTEAT"]]
     ]
