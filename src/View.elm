@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html, div, input, button, text, ul, li, img, a,h2)
+import Html exposing (Html, div, input, button, text, ul, li, img, a,h1,h2,section)
 import Html.Attributes exposing (href, placeholder, value, src ,class)
 import Html.Events exposing (onClick, onInput)
 import Model exposing (Model, Recipe)
@@ -35,3 +35,8 @@ recipeItem model recipe =
 ingredientItem : String -> Html Msg
 ingredientItem ingredient =
     li [] [ text ingredient ]
+
+titelSection : Html Msg
+titelSection =
+    section[class "section"]
+        [div[][h1[class"title"][text"Hello"]]]
