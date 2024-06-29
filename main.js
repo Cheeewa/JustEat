@@ -6217,6 +6217,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
@@ -6231,45 +6232,6 @@ var $author$project$View$ingredientItem = function (ingredient) {
 			]));
 };
 var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$html$Html$section = _VirtualDom_node('section');
-var $author$project$View$introduction = A2(
-	$elm$html$Html$section,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('section')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$h1,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('title')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Welcom to JustEat!')
-				])),
-			A2(
-			$elm$html$Html$h2,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('title is-4')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Are you hungry and want to clear your refrigerator?')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we\'ll suggest delicious recipes you can whip up in no time.Say goodbye to food waste and hello to creativity in the kitchen!')
-				]))
-		]));
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -6369,13 +6331,19 @@ var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('
 var $author$project$View$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
+		_List_Nil,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('has-text-centered')
-			]),
-		_List_fromArray(
-			[
-				$author$project$View$introduction,
+				A2(
+				$elm$html$Html$h1,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('title')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Willkommen')
+					])),
 				A2(
 				$elm$html$Html$input,
 				_List_fromArray(
@@ -6389,7 +6357,7 @@ var $author$project$View$view = function (model) {
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('button is-primary'),
+						$elm$html$Html$Attributes$class('button is-link'),
 						$elm$html$Html$Events$onClick($author$project$Msg$FetchRecipes)
 					]),
 				_List_fromArray(
