@@ -6243,31 +6243,47 @@ var $author$project$View$introduction = A2(
 	_List_fromArray(
 		[
 			A2(
-			$elm$html$Html$h1,
+			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('title')
+					$elm$html$Html$Attributes$class('box')
 				]),
 			_List_fromArray(
 				[
-					$elm$html$Html$text('Welcom to JustEat!')
-				])),
-			A2(
-			$elm$html$Html$h2,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('title is-4')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Are you hungry and want to clear your refrigerator?')
-				])),
-			A2(
-			$elm$html$Html$p,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we\'ll suggest delicious recipes you can whip up in no time.Say goodbye to food waste and hello to creativity in the kitchen!')
+					A2(
+					$elm$html$Html$h1,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('title')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Welcome to JustEat!')
+						])),
+					A2(
+					$elm$html$Html$h2,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('title is-4')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Are you hungry and want to clear your refrigerator?')
+						])),
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we\'ll suggest delicious recipes you can whip up in no time.')
+						])),
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Say goodbye to food waste and hello to creativity in the kitchen!')
+						]))
 				]))
 		]));
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
@@ -6383,6 +6399,13 @@ var $author$project$View$view = function (model) {
 						$elm$html$Html$Attributes$placeholder('Enter ingredients'),
 						$elm$html$Html$Attributes$value(model.ingredients),
 						$elm$html$Html$Events$onInput($author$project$Msg$UpdateIngredients)
+					]),
+				_List_Nil),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('mt-3')
 					]),
 				_List_Nil),
 				A2(

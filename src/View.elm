@@ -11,8 +11,8 @@ view : Model -> Html Msg
 view model =
     div [class "has-text-centered"]
         [introduction
-        ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
+        ,input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients] []
+        ,button [ class "button is-primary", onClick FetchRecipes] [ text "Get Recipes" ]
         , case model.selectedRecipe of
             Nothing ->
                 ul [] (List.map (recipeItem model) model.recipes)
@@ -40,8 +40,10 @@ ingredientItem ingredient =
 introduction : Html Msg
 introduction =
     section [class "section"]
-        [ h1 [class "title"][ text "Welcom to JustEat!"]
-        , h2 [class "title is-4"] [text"Are you hungry and want to clear your refrigerator?"]
-        , p [][text "At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we'll suggest delicious recipes you can whip up in no time.Say goodbye to food waste and hello to creativity in the kitchen!"]
+        [  div[class "box"][h1 [class "title"][ text "Welcome to JustEat!"]
+                    , h2 [class "title is-4"] [text"Are you hungry and want to clear your refrigerator?"]
+                    , p [][text "At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we'll suggest delicious recipes you can whip up in no time."]
+                    , p [][text "Say goodbye to food waste and hello to creativity in the kitchen!"]
+                    ] 
         ]
 
