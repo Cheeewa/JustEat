@@ -6217,7 +6217,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$li = _VirtualDom_node('li');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
@@ -6334,16 +6333,6 @@ var $author$project$View$view = function (model) {
 		_List_Nil,
 		_List_fromArray(
 			[
-				A2(
-				$elm$html$Html$h1,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('title')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('WELCOME TO JUSTEAT')
-					])),
 				A2(
 				$elm$html$Html$input,
 				_List_fromArray(
