@@ -6374,6 +6374,7 @@ var $author$project$View$view = function (model) {
 								$elm$html$Html$button,
 								_List_fromArray(
 									[
+										$elm$html$Html$Attributes$class('button is-primary'),
 										$elm$html$Html$Events$onClick($author$project$Msg$DeselectRecipe)
 									]),
 								_List_fromArray(
