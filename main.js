@@ -6326,7 +6326,6 @@ var $author$project$View$recipeItem = F2(
 						]))
 				]));
 	});
-var $elm$html$Html$section = _VirtualDom_node('section');
 var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$View$view = function (model) {
@@ -6336,29 +6335,14 @@ var $author$project$View$view = function (model) {
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$section,
+				$elm$html$Html$h1,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('section')
+						$elm$html$Html$Attributes$class('title')
 					]),
 				_List_fromArray(
 					[
-						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$h1,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('title')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('WELCOME TO JUSTEAT')
-									]))
-							]))
+						$elm$html$Html$text('WELCOME TO JUSTEAT')
 					])),
 				A2(
 				$elm$html$Html$input,
