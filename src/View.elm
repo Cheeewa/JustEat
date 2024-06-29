@@ -8,7 +8,7 @@ import Msg exposing (Msg(..))
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [class "has-text-centered"]
         [ input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
         , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
         , case model.selectedRecipe of
