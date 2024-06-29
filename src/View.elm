@@ -11,7 +11,7 @@ view model =
     div []
         [ titlesection
         , input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
-        , button [ onClick FetchRecipes ] [ text "Get Recipes" ]
+        , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
         , case model.selectedRecipe of
             Nothing ->
                 ul [] (List.map (recipeItem model) model.recipes)
@@ -41,5 +41,6 @@ titlesection : Html Msg
 titlesection = 
     section [class "section"]
     [div[]
-        [h1[class "title"][text "WELCOME TO JUSTEAT"]]
+        [h1[class "title"][text "WELCOME TO JUSTEAT"]
+        ]
     ]
