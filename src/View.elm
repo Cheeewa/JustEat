@@ -37,10 +37,9 @@ ingredientItem : String -> Html Msg
 ingredientItem ingredient =
     li [] [ text ingredient ]
 
-titelsection : Html Msg
-titelsection = 
+titlesection : Html Msg
+titlesection = 
     section [class "section"]
     [div[]
-        [h1[class "title"]
-        [text "WELCOME TO JUSTEAT"]]
+        [h1[class "title"][text "WELCOME TO JUSTEAT"]]
     ]
