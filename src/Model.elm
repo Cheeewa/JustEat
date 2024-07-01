@@ -18,4 +18,3 @@ init =
     , recipes = []
     , selectedRecipe = Nothing }
 
-
