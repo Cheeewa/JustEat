@@ -10738,7 +10738,7 @@ var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$init = F3(
 	function (flags, url, key) {
 		return _Utils_Tuple2(
-			{ingredients: '', key: key, recipes: _List_Nil, selectedRecipe: $elm$core$Maybe$Nothing, url: url},
+			{ingredients: '', key: key, recipes: _List_Nil, selectedRecipe: $elm$core$Maybe$Nothing, showBox: false, url: url},
 			$elm$core$Platform$Cmd$none);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -11127,21 +11127,175 @@ var $author$project$Main$update = F2(
 						model,
 						$elm$browser$Browser$Navigation$load(href));
 				}
-			default:
+			case 'UrlChanged':
 				var url = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{url: url}),
 					$elm$core$Platform$Cmd$none);
+			default:
+				var sBox = msg;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{showBox: !model.showBox}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Main$DeselectRecipe = {$: 'DeselectRecipe'};
+var $elm$html$Html$br = _VirtualDom_node('br');
 var $author$project$Main$FetchRecipes = {$: 'FetchRecipes'};
 var $author$project$Main$UpdateIngredients = function (a) {
 	return {$: 'UpdateIngredients', a: a};
 };
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$Main$entertoGetIngredients = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$input,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$placeholder('Enter ingredients'),
+						$elm$html$Html$Attributes$value(model.ingredients),
+						$elm$html$Html$Events$onInput($author$project$Main$UpdateIngredients)
+					]),
+				_List_Nil),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('button is-warning'),
+						$elm$html$Html$Events$onClick($author$project$Main$FetchRecipes)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Get Recipes')
+					]))
+			]));
+};
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $author$project$Main$ToggleBox = {$: 'ToggleBox'};
+var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
+var $elm$svg$Svg$foreignObject = $elm$svg$Svg$trustedNode('foreignObject');
+var $elm$svg$Svg$Attributes$height = _VirtualDom_attribute('height');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$section = _VirtualDom_node('section');
+var $author$project$Main$introduction = A2(
+	$elm$html$Html$section,
+	_List_Nil,
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$h1,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('title')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('WELCOME TO JUSTEAT!')
+				])),
+			A2(
+			$elm$html$Html$h2,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('title is-4')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Are you hungry and want to clear your refrigerator?')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('and we\'ll suggest delicious recipes you can whip up in no time.')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Say goodbye to food waste and hello to creativity in the kitchen!')
+				]))
+		]));
+var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
+var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
+var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
+var $elm$svg$Svg$Attributes$x = _VirtualDom_attribute('x');
+var $elm$svg$Svg$Attributes$y = _VirtualDom_attribute('y');
+var $author$project$Main$svgBox = A2(
+	$elm$svg$Svg$svg,
+	_List_fromArray(
+		[
+			$elm$svg$Svg$Attributes$width('420'),
+			$elm$svg$Svg$Attributes$height('420'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 400 400')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$svg$Svg$foreignObject,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('400'),
+					$elm$svg$Svg$Attributes$height('400')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('has-text-centered')
+						]),
+					_List_fromArray(
+						[
+							A2($elm$html$Html$br, _List_Nil, _List_Nil),
+							$author$project$Main$introduction
+						]))
+				]))
+		]));
+var $author$project$Main$headview = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Main$ToggleBox)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('What is JustEat?')
+					])),
+				model.showBox ? A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[$author$project$Main$svgBox])) : $elm$html$Html$text('')
+			]));
+};
 var $author$project$Main$ingredientItem = function (ingredient) {
 	return A2(
 		$elm$html$Html$li,
@@ -11151,61 +11305,6 @@ var $author$project$Main$ingredientItem = function (ingredient) {
 				$elm$html$Html$text(ingredient)
 			]));
 };
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$section = _VirtualDom_node('section');
-var $author$project$Main$introduction = A2(
-	$elm$html$Html$section,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('section')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('box')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h1,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('title')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Welcome to JustEat!')
-						])),
-					A2(
-					$elm$html$Html$h2,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('title is-4')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Are you hungry and want to clear your refrigerator?')
-						])),
-					A2(
-					$elm$html$Html$p,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('At JustEat, we help you make the most out of what you already have. Simply enter the ingredients you have on hand, and we\'ll suggest delicious recipes you can whip up in no time.')
-						])),
-					A2(
-					$elm$html$Html$p,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Say goodbye to food waste and hello to creativity in the kitchen!')
-						]))
-				]))
-		]));
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
 var $author$project$Main$SelectRecipe = function (a) {
 	return {$: 'SelectRecipe', a: a};
 };
@@ -11234,7 +11333,7 @@ var $author$project$Main$recipeRow = function (recipe) {
 						_List_fromArray(
 							[
 								$elm$html$Html$Attributes$src(recipe.image),
-								$elm$html$Html$Attributes$class('64x64'),
+								$elm$html$Html$Attributes$class('128x128'),
 								$elm$html$Html$Attributes$class('has-text-cenetered')
 							]),
 						_List_Nil)
@@ -11248,7 +11347,7 @@ var $author$project$Main$recipeRow = function (recipe) {
 						$elm$html$Html$a,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$href('Recipe'),
+								$elm$html$Html$Attributes$href('#'),
 								$elm$html$Html$Events$onClick(
 								$author$project$Main$SelectRecipe(recipe))
 							]),
@@ -11304,96 +11403,109 @@ var $author$project$Main$recipesTable = function (recipes) {
 				A2($elm$core$List$map, $author$project$Main$recipeRow, recipes))
 			]));
 };
+var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
+var $elm$svg$Svg$Attributes$stroke = _VirtualDom_attribute('stroke');
+var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
+	return A3(
+		_VirtualDom_attributeNS,
+		'http://www.w3.org/1999/xlink',
+		'xlink:href',
+		_VirtualDom_noJavaScriptUri(value));
+};
+var $author$project$Main$svgLogo = A2(
+	$elm$svg$Svg$svg,
+	_List_fromArray(
+		[
+			$elm$svg$Svg$Attributes$width('100%'),
+			$elm$svg$Svg$Attributes$height('150'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 90 90'),
+			A2($elm$html$Html$Attributes$style, 'background', 'orange')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$svg$Svg$image,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('128'),
+					$elm$svg$Svg$Attributes$height('128'),
+					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
+					$elm$svg$Svg$Attributes$stroke('black')
+				]),
+			_List_Nil)
+		]));
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
 				A2(
 				$elm$html$Html$div,
+				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('has-text-centered')
-					]),
-				_List_fromArray(
-					[
-						$author$project$Main$introduction,
+						$author$project$Main$svgLogo,
 						A2(
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('field')
+								$elm$html$Html$Attributes$class('has-text-centered')
 							]),
 						_List_fromArray(
 							[
-								A2(
-								$elm$html$Html$input,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$placeholder('Enter ingredients'),
-										$elm$html$Html$Attributes$value(model.ingredients),
-										$elm$html$Html$Events$onInput($author$project$Main$UpdateIngredients)
-									]),
-								_List_Nil),
-								A2($elm$html$Html$p, _List_Nil, _List_Nil),
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('button is-primary'),
-										$elm$html$Html$Events$onClick($author$project$Main$FetchRecipes)
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Get Recipes')
-									]))
+								$author$project$Main$headview(model),
+								$author$project$Main$entertoGetIngredients(model),
+								function () {
+								if ((model.ingredients !== '') && (!$elm$core$List$isEmpty(model.recipes))) {
+									var _v0 = model.selectedRecipe;
+									if (_v0.$ === 'Nothing') {
+										return $author$project$Main$recipesTable(model.recipes);
+									} else {
+										var recipe = _v0.a;
+										return A2(
+											$elm$html$Html$div,
+											_List_Nil,
+											_List_fromArray(
+												[
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('Back to Recipes')
+														])),
+													A2(
+													$elm$html$Html$h2,
+													_List_Nil,
+													_List_fromArray(
+														[
+															$elm$html$Html$text(recipe.label)
+														])),
+													A2(
+													$elm$html$Html$ul,
+													_List_Nil,
+													A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients))
+												]));
+									}
+								} else {
+									return A2(
+										$elm$html$Html$div,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2($elm$html$Html$br, _List_Nil, _List_Nil),
+												$elm$html$Html$text('Ready to find recipes?'),
+												A2($elm$html$Html$br, _List_Nil, _List_Nil),
+												$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
+											]));
+								}
+							}()
 							]))
-					])),
-				function () {
-				var _v0 = model.selectedRecipe;
-				if (_v0.$ === 'Nothing') {
-					return $author$project$Main$recipesTable(model.recipes);
-				} else {
-					var recipe = _v0.a;
-					return A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href(''),
-										$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Back to Recipes')
-									])),
-								A2(
-								$elm$html$Html$h2,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text(recipe.label)
-									])),
-								A2(
-								$elm$html$Html$ul,
-								_List_Nil,
-								A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients)),
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href(recipe.url)
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Go to recipe')
-									]))
-							]));
-				}
-			}()
+					]))
 			]),
 		title: 'JustEat'
 	};
@@ -11401,4 +11513,4 @@ var $author$project$Main$view = function (model) {
 var $author$project$Main$main = $elm$browser$Browser$application(
 	{init: $author$project$Main$init, onUrlChange: $author$project$Main$UrlChanged, onUrlRequest: $author$project$Main$LinkClicked, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Main.Msg","aliases":{"Main.Recipe":{"args":[],"type":"{ label : String.String, image : String.String, ingredients : List.List String.String, url : String.String }"},"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Main.Msg":{"args":[],"tags":{"UpdateIngredients":["String.String"],"FetchRecipes":[],"ReceiveRecipes":["Result.Result Http.Error (List.List Main.Recipe)"],"SelectRecipe":["Main.Recipe"],"DeselectRecipe":[],"LinkClicked":["Browser.UrlRequest"],"UrlChanged":["Url.Url"]}},"Http.Error":{"args":[],"tags":{"BadUrl":["String.String"],"Timeout":[],"NetworkError":[],"BadStatus":["Basics.Int"],"BadBody":["String.String"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"List.List":{"args":["a"],"tags":{}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"Result.Result":{"args":["error","value"],"tags":{"Ok":["value"],"Err":["error"]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}}}}})}});}(this));
+	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Main.Msg","aliases":{"Main.Recipe":{"args":[],"type":"{ label : String.String, image : String.String, ingredients : List.List String.String, url : String.String }"},"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Main.Msg":{"args":[],"tags":{"UpdateIngredients":["String.String"],"FetchRecipes":[],"ReceiveRecipes":["Result.Result Http.Error (List.List Main.Recipe)"],"SelectRecipe":["Main.Recipe"],"DeselectRecipe":[],"LinkClicked":["Browser.UrlRequest"],"UrlChanged":["Url.Url"],"ToggleBox":[]}},"Http.Error":{"args":[],"tags":{"BadUrl":["String.String"],"Timeout":[],"NetworkError":[],"BadStatus":["Basics.Int"],"BadBody":["String.String"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"List.List":{"args":["a"],"tags":{}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"Result.Result":{"args":["error","value"],"tags":{"Ok":["value"],"Err":["error"]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}}}}})}});}(this));
