@@ -159,12 +159,6 @@ view model =
                 , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
                 ]
             ]
-            {-
-                model.url.fragment of
-                    Just fragment ->
-                        case fragment of
-
-            --}
         , case model.selectedRecipe of
             Nothing ->
                 recipesTable model.recipes
