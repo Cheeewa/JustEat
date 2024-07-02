@@ -11,24 +11,16 @@ import Json.Decode as Decode
 
 
 
-
 -- Decoder
-
 
 
 recipeDecoder : Decode.Decoder Recipe
 recipeDecoder =
-    Decode.map3 Recipe
+    Decode.map4 Recipe
         (Decode.field "label" Decode.string)
         (Decode.field "image" Decode.string)
-
-        {-could be modify to use Thumbnail instead, need new decoder implementation
-         something like "images" (Decode.list (
-                            Decode.field "THUMBNAIL" (Decode.list (
-                                Decode.field "url" Decode.string)))) 
-        -}
-        
         (Decode.field "ingredientLines" (Decode.list Decode.string))
+        (Decode.field "url" Decode.string)
 
 recipesDecoder : Decode.Decoder (List Recipe)
 recipesDecoder =
@@ -49,33 +41,30 @@ fetchRecipes ingredients =
 
 
 
-
-
 -- MAIN
-
 
 
 main : Program () Model Msg
 main =
-    Browser.application { 
-        init = init, 
-        update = update, 
-        view = view, 
-        onUrlChange = UrlChanged,
-        onUrlRequest = LinkClicked,
-        subscriptions = subscriptions}
-
+    Browser.application
+        { init = init
+        , update = update
+        , view = view
+        , onUrlChange = UrlChanged
+        , onUrlRequest = LinkClicked
+        , subscriptions = subscriptions
+        }
 
 
 
 -- MODEL
 
 
-
 type alias Recipe =
     { label : String
-    , thumbnail : String
+    , image : String
     , ingredients : List String
+    , url : String
     }
 
 type alias Model =
@@ -93,13 +82,11 @@ init flags url key =
      , selectedRecipe = Nothing
      , url = url
      , key = key }
-    ,Cmd.none )
-
+    , Cmd.none )
 
 
 
   -- UPDATE
-
 
 
 type Msg
@@ -148,7 +135,6 @@ update msg model =
 
 
 
-
 -- SUBSCRIPTIONS
 
 
@@ -158,9 +144,7 @@ subscriptions _ =
 
 
 
-
   -- VIEW
-
 
 
 view : Model -> Browser.Document Msg
@@ -175,15 +159,22 @@ view model =
                 , button [ class "button is-primary", onClick FetchRecipes ] [ text "Get Recipes" ]
                 ]
             ]
+            {-
+                model.url.fragment of
+                    Just fragment ->
+                        case fragment of
+
+            --}
         , case model.selectedRecipe of
             Nothing ->
                 recipesTable model.recipes
 
             Just recipe ->
                 div []
-                    [ button [ onClick DeselectRecipe ] [ text "Back to Recipes" ]
+                    [ button [ href "", onClick DeselectRecipe ] [ text "Back to Recipes" ]
                     , h2 [] [ text recipe.label ]
                     , ul [] (List.map ingredientItem recipe.ingredients)
+                    , a [ href recipe.url ] [ text "Go to recipe" ]
                     ]
         ]
     }
@@ -204,8 +195,8 @@ recipesTable recipes =
 recipeRow : Recipe -> Html Msg
 recipeRow recipe =
     tr []
-        [ td [] [ img [ src recipe.thumbnail, class "64x64", class "has-text-cenetered"] [] ]
-        , td [] [ a [ href recipe.label, onClick (SelectRecipe recipe) ] [ text recipe.label ] ]
+        [ td [] [ img [ src recipe.image, class "64x64", class "has-text-cenetered"] [] ]
+        , td [] [ a [ href "Recipe", onClick (SelectRecipe recipe) ] [ text recipe.label ] ]
         ]
 
 ingredientItem : String -> Html Msg
