@@ -234,7 +234,7 @@ svgBox =
 
 svgLogo : Html Msg
 svgLogo =
-    svg [ width "100%", height "150", viewBox "0 0 90 90" , style "background" "orange"]
+    svg [ width "100", height "150", viewBox "0 0 90 90" , style "background" "orange"]
         [ --rect [x "0", y "0", width "100", height "100", stroke "black" , strokeWidth"3", fill "none"][]
         --, 
         image [ x "0", y"0", width "128", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] 
