@@ -194,6 +194,7 @@ entertoGetIngredients model =
             [ input [ placeholder "Enter ingredients", value model.ingredients, onInput UpdateIngredients ] []
             , br[][]
             , br[][]
+            , text "gdfälül"
             , button [ class "button is-warning", onClick FetchRecipes ] [ text "Get Recipes" ]
             ]
 
