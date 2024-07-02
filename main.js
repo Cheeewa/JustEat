@@ -6375,7 +6375,6 @@ var $author$project$Main$entertoGetIngredients = function (model) {
 				_List_Nil),
 				A2($elm$html$Html$br, _List_Nil, _List_Nil),
 				A2($elm$html$Html$br, _List_Nil, _List_Nil),
-				$elm$html$Html$text('gdfälül'),
 				A2(
 				$elm$html$Html$button,
 				_List_fromArray(
