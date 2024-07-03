@@ -160,8 +160,7 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "JustEat"
     , body = 
-        [ div[class "container"][svgLogo, conten model]
-        ]
+        [ div[class "container"][svgLogo, conten model]]
                 
              
         
@@ -225,6 +224,7 @@ svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
                    [rect[x "0", y "0", width "200", height "200",fill "none", stroke "black"][]
                    --, 
                    ,image[x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65"][]
+                   ,text_[x "30", y "0"][ introduction]
                    ]
 
 svgBox : Html Msg
