@@ -11261,7 +11261,10 @@ var $author$project$Main$svgBox = A2(
 				[
 					A2(
 					$elm$html$Html$div,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('has-text-centered')
+						]),
 					_List_fromArray(
 						[
 							A2($elm$html$Html$br, _List_Nil, _List_Nil),
@@ -11451,20 +11454,32 @@ var $author$project$Main$svgLogo = A2(
 	_List_fromArray(
 		[
 			$elm$svg$Svg$Attributes$width('100%'),
-			$elm$svg$Svg$Attributes$height('25vh'),
+			$elm$svg$Svg$Attributes$height('150'),
 			$elm$svg$Svg$Attributes$viewBox('0 0 100 100'),
 			A2($elm$html$Html$Attributes$style, 'background', 'orange')
 		]),
 	_List_fromArray(
 		[
 			A2(
+			$elm$svg$Svg$rect,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('100'),
+					$elm$svg$Svg$Attributes$height('150'),
+					$elm$svg$Svg$Attributes$stroke('black'),
+					$elm$svg$Svg$Attributes$fill('none')
+				]),
+			_List_Nil),
+			A2(
 			$elm$svg$Svg$image,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('-50'),
-					$elm$svg$Svg$Attributes$y('-10'),
-					$elm$svg$Svg$Attributes$width('200'),
-					$elm$svg$Svg$Attributes$height('125%'),
+					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('108'),
+					$elm$svg$Svg$Attributes$height('128'),
 					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
 					$elm$svg$Svg$Attributes$stroke('black')
 				]),

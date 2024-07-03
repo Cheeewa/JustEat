@@ -137,10 +137,9 @@ update msg model =
                 ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | url = url }
-            , Cmd.none
-            )
-        sBox ->
+            ( { model | url = url }, Cmd.none)
+        
+        ToggleBox ->
             ({model | showBox = not model.showBox}, Cmd.none)
 
 
@@ -161,9 +160,15 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "JustEat"
     , body = 
-        [ 
-            div[class "container"][svgLogo]
-            , div [ class "has-text-centered"]
+        [ div[class "container"][svgLogo, conten model]
+        ]
+                
+             
+        
+    }
+conten : Model -> Html Msg
+conten model =    
+        div [ class "has-text-centered content"]
                       [ br[][] 
                       , headview model
                       , br[][]
@@ -185,12 +190,8 @@ view model =
                                 , br[][]
                                 , text "Please enter one ingredient from your fridge to get cooking ideas! "
                                 ]
-            ]
-            ,div[class "container"][svgBackground]
-                
-             
-        ]
-    }
+                        ]
+        
 
 entertoGetIngredients : Model -> Html Msg
 entertoGetIngredients model = 
@@ -215,26 +216,22 @@ headview model =
 
 --Design
 
+s--vgbgToHtmlAttribute : string
+--svgbgToHtmlAttribute = 
+
+
 svgBackground : Html Msg
 svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
-                   [rect[x "0", y "0", width "200", height "200", fill "orange"][]
-                   , image[x "0", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.8"][]
+                   [rect[x "0", y "0", width "200", height "200",fill "none", stroke "black"][]
+                   --, 
+                   ,image[x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65"][]
                    ]
 
 svgBox : Html Msg
 svgBox =
     svg [ SA.width "420", SA.height "420", viewBox "0 0 550 550" ]
-        [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] []
-        --, S.image [ x "200", y "200", SA.width "140", SA.height "140", SA.xlinkHref "http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"] []
-        --, S.image [x "50", y"10", SA.width "100" ,SA.height "180",  SA.xlinkHref "docs/logo.png"][]
-        --, svgLogo
-        --, 
-        foreignObject [ x "0", y "0", width "500" , height "500"]
-            [ div [ --class "has-text-centered" , style "background" "white", style "padding" "10px" 
-                    class "has-text-centered" --,  style "padding" "10px" 
-                ]
-                [br[][],introduction ]
-            ]
+        [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] [] 
+         foreignObject [ x "0", y "0", width "500" , height "500"][ div [ ][br[][], introduction ]]
         --, text_ [ x "100", y "100", fontSize "20", textAnchor "middle", fill "black", dy ".3em" ][ introduction ]
          --,img[href ""http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"][]
         ]
@@ -244,10 +241,8 @@ svgBox =
 
 svgLogo : Html Msg
 svgLogo =
-    svg [ width "100%", height "150", viewBox "0 0 90 90" , style "background" "orange"]
-        [ --rect [x "0", y "0", width "100", height "100", stroke "black" , strokeWidth"3", fill "none"][]
-        --, 
-        image [ x "0", y"0", width "128", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] 
+    svg [ width "100%", height "25vh", viewBox "0 0 100 100" , style "background" "orange"]
+        [ image [ x "-50", y"-10", width "200", height "125%", xlinkHref "docs/logo.png" , stroke "black"] [] 
         ]
 
 introduction : Html Msg
