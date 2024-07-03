@@ -161,7 +161,7 @@ view model =
     { title = "JustEat"
     , body = 
         [ 
-            div[class "container"][svgLogo , svgBackground]
+            div[][svgLogo , svgBackground]
                 , div [ class "has-text-centered"]
                       [ br[][] 
                       , headview model
@@ -224,19 +224,8 @@ svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
 svgBox : Html Msg
 svgBox =
     svg [ SA.width "420", SA.height "420", viewBox "0 0 550 550" ]
-        [-- rect [ x "10", y "10", SA.width "500", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] []
-        --, S.image [ x "200", y "200", SA.width "140", SA.height "140", SA.xlinkHref "http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"] []
-        --, S.image [x "50", y"10", SA.width "100" ,SA.height "180",  SA.xlinkHref "docs/logo.png"][]
-        --, svgLogo
-        --, 
-        foreignObject [ x "0", y "0", width "500" , height "500"]
         [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] [] 
-         foreignObject [ x "0", y "0", width "500" , height "500"]
-            [ div [ --class "has-text-centered" , style "background" "white", style "padding" "10px" 
-                    class "has-text-centered" --,  style "padding" "10px" 
-                ]
-                [br[][],introduction ]
-            ]
+         foreignObject [ x "0", y "0", width "500" , height "500"][ div [ ][br[][], introduction ]]
         --, text_ [ x "100", y "100", fontSize "20", textAnchor "middle", fill "black", dy ".3em" ][ introduction ]
          --,img[href ""http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"][]
         ]
@@ -246,10 +235,8 @@ svgBox =
 
 svgLogo : Html Msg
 svgLogo =
-    svg [ width "100%", height "150", viewBox "0 0 100 100" , style "background" "orange", stoke "black"]
-        [ rect [x "0", y "0", width "100", height "150", stroke "black" , fill "none"][]
-        --, 
-        , image [ x "0", y"0", width "128", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] 
+    svg [ width "100%", height "25vh", viewBox "0 0 100 100" , style "background" "orange"]
+        [ image [ x "-50", y"-10", width "200", height "125%", xlinkHref "docs/logo.png" , stroke "black"] [] 
         ]
 
 introduction : Html Msg

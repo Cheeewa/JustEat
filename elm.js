@@ -11135,7 +11135,6 @@ var $author$project$Main$update = F2(
 						{url: url}),
 					$elm$core$Platform$Cmd$none);
 			default:
-				var sBox = msg;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -11262,10 +11261,7 @@ var $author$project$Main$svgBox = A2(
 				[
 					A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('has-text-centered')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							A2($elm$html$Html$br, _List_Nil, _List_Nil),
@@ -11455,32 +11451,20 @@ var $author$project$Main$svgLogo = A2(
 	_List_fromArray(
 		[
 			$elm$svg$Svg$Attributes$width('100%'),
-			$elm$svg$Svg$Attributes$height('150'),
+			$elm$svg$Svg$Attributes$height('25vh'),
 			$elm$svg$Svg$Attributes$viewBox('0 0 100 100'),
 			A2($elm$html$Html$Attributes$style, 'background', 'orange')
 		]),
 	_List_fromArray(
 		[
 			A2(
-			$elm$svg$Svg$rect,
-			_List_fromArray(
-				[
-					$elm$svg$Svg$Attributes$x('0'),
-					$elm$svg$Svg$Attributes$y('0'),
-					$elm$svg$Svg$Attributes$width('100'),
-					$elm$svg$Svg$Attributes$height('150'),
-					$elm$svg$Svg$Attributes$stroke('black'),
-					$elm$svg$Svg$Attributes$fill('none')
-				]),
-			_List_Nil),
-			A2(
 			$elm$svg$Svg$image,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('0'),
-					$elm$svg$Svg$Attributes$y('0'),
-					$elm$svg$Svg$Attributes$width('128'),
-					$elm$svg$Svg$Attributes$height('128'),
+					$elm$svg$Svg$Attributes$x('-50'),
+					$elm$svg$Svg$Attributes$y('-10'),
+					$elm$svg$Svg$Attributes$width('200'),
+					$elm$svg$Svg$Attributes$height('125%'),
 					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
 					$elm$svg$Svg$Attributes$stroke('black')
 				]),
@@ -11492,10 +11476,7 @@ var $author$project$Main$view = function (model) {
 			[
 				A2(
 				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('container')
-					]),
+				_List_Nil,
 				_List_fromArray(
 					[$author$project$Main$svgLogo, $author$project$Main$svgBackground])),
 				A2(
