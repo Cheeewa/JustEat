@@ -216,7 +216,7 @@ headview model =
 
 --Design
 
-s--vgbgToHtmlAttribute : string
+--vgbgToHtmlAttribute : string
 --svgbgToHtmlAttribute = 
 
 
