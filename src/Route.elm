@@ -10,6 +10,9 @@ type Route
 fromUrl: Url -> Route
 fromUrl url = 
     case url.path of
-        "/" -> Home
-        "/Recipe" -> Recipe
-        _ -> NotFound
+        "/" -> 
+            Home
+        "/recipe" -> 
+            Recipe
+        _ -> 
+            NotFound

@@ -6285,7 +6285,6 @@ var $author$project$Main$update = F2(
 						{url: url}),
 					$elm$core$Platform$Cmd$none);
 			default:
-				var sBox = msg;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -6293,10 +6292,6 @@ var $author$project$Main$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Main$DeselectRecipe = {$: 'DeselectRecipe'};
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$br = _VirtualDom_node('br');
-var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -6306,6 +6301,10 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $author$project$Main$DeselectRecipe = {$: 'DeselectRecipe'};
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Main$FetchRecipes = {$: 'FetchRecipes'};
 var $author$project$Main$UpdateIngredients = function (a) {
@@ -6460,7 +6459,7 @@ var $author$project$Main$svgBox = A2(
 		[
 			$elm$svg$Svg$Attributes$width('420'),
 			$elm$svg$Svg$Attributes$height('420'),
-			$elm$svg$Svg$Attributes$viewBox('0 0 400 400')
+			$elm$svg$Svg$Attributes$viewBox('0 0 550 550')
 		]),
 	_List_fromArray(
 		[
@@ -6470,17 +6469,14 @@ var $author$project$Main$svgBox = A2(
 				[
 					$elm$svg$Svg$Attributes$x('0'),
 					$elm$svg$Svg$Attributes$y('0'),
-					$elm$svg$Svg$Attributes$width('400'),
-					$elm$svg$Svg$Attributes$height('400')
+					$elm$svg$Svg$Attributes$width('500'),
+					$elm$svg$Svg$Attributes$height('500')
 				]),
 			_List_fromArray(
 				[
 					A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('has-text-centered')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							A2($elm$html$Html$br, _List_Nil, _List_Nil),
@@ -6633,6 +6629,80 @@ var $author$project$Main$recipesTable = function (recipes) {
 				A2($elm$core$List$map, $author$project$Main$recipeRow, recipes))
 			]));
 };
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $author$project$Main$conten = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('has-text-centered content')
+			]),
+		_List_fromArray(
+			[
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				$author$project$Main$headview(model),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				$author$project$Main$entertoGetIngredients(model),
+				function () {
+				if ((model.ingredients !== '') && (!$elm$core$List$isEmpty(model.recipes))) {
+					var _v0 = model.selectedRecipe;
+					if (_v0.$ === 'Nothing') {
+						return $author$project$Main$recipesTable(model.recipes);
+					} else {
+						var recipe = _v0.a;
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Back to Recipes')
+										])),
+									A2(
+									$elm$html$Html$h2,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text(recipe.label)
+										])),
+									A2(
+									$elm$html$Html$ul,
+									_List_Nil,
+									A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients)),
+									A2(
+									$elm$html$Html$a,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href(recipe.url)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Go to recipe')
+										]))
+								]));
+					}
+				} else {
+					return A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								$elm$html$Html$text('Ready to find recipes?'),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
+							]));
+				}
+			}()
+			]));
+};
 var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
 var $elm$svg$Svg$Attributes$stroke = _VirtualDom_attribute('stroke');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
@@ -6668,86 +6738,20 @@ var $author$project$Main$svgLogo = A2(
 				]),
 			_List_Nil)
 		]));
-var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
 				A2(
 				$elm$html$Html$div,
-				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('container')
+					]),
 				_List_fromArray(
 					[
 						$author$project$Main$svgLogo,
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('has-text-centered')
-							]),
-						_List_fromArray(
-							[
-								$author$project$Main$headview(model),
-								$author$project$Main$entertoGetIngredients(model),
-								function () {
-								if ((model.ingredients !== '') && (!$elm$core$List$isEmpty(model.recipes))) {
-									var _v0 = model.selectedRecipe;
-									if (_v0.$ === 'Nothing') {
-										return $author$project$Main$recipesTable(model.recipes);
-									} else {
-										var recipe = _v0.a;
-										return A2(
-											$elm$html$Html$div,
-											_List_Nil,
-											_List_fromArray(
-												[
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('Back to Recipes')
-														])),
-													A2(
-													$elm$html$Html$h2,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text(recipe.label)
-														])),
-													A2(
-													$elm$html$Html$ul,
-													_List_Nil,
-													A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients)),
-													A2(
-													$elm$html$Html$a,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$href(recipe.url)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('Go to recipe')
-														]))
-												]));
-									}
-								} else {
-									return A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2($elm$html$Html$br, _List_Nil, _List_Nil),
-												$elm$html$Html$text('Ready to find recipes?'),
-												A2($elm$html$Html$br, _List_Nil, _List_Nil),
-												$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
-											]));
-								}
-							}()
-							]))
+						$author$project$Main$conten(model)
 					]))
 			]),
 		title: 'JustEat'
