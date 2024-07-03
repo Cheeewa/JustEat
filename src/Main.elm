@@ -160,9 +160,15 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "JustEat"
     , body = 
-        [ 
-            div[][svgLogo , svgBackground]
-                , div [ class "has-text-centered"]
+        [ div[class "container"][svgLogo, conten model]
+        ]
+                
+             
+        
+    }
+conten : Model -> Html Msg
+conten model =    
+        div [ class "has-text-centered content"]
                       [ br[][] 
                       , headview model
                       , br[][]
@@ -185,11 +191,7 @@ view model =
                                 , text "Please enter one ingredient from your fridge to get cooking ideas! "
                                 ]
                         ]
-                ]
-                
-             
         
-    }
 
 entertoGetIngredients : Model -> Html Msg
 entertoGetIngredients model = 
@@ -213,6 +215,10 @@ headview model =
 
 
 --Design
+
+s--vgbgToHtmlAttribute : string
+--svgbgToHtmlAttribute = 
+
 
 svgBackground : Html Msg
 svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
