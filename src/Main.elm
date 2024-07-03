@@ -137,10 +137,9 @@ update msg model =
                 ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | url = url }
-            , Cmd.none
-            )
-        sBox ->
+            ( { model | url = url }, Cmd.none)
+        
+        ToggleBox ->
             ({model | showBox = not model.showBox}, Cmd.none)
 
 
@@ -231,6 +230,8 @@ svgBox =
         --, svgLogo
         --, 
         foreignObject [ x "0", y "0", width "500" , height "500"]
+        [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] [] 
+         foreignObject [ x "0", y "0", width "500" , height "500"]
             [ div [ --class "has-text-centered" , style "background" "white", style "padding" "10px" 
                     class "has-text-centered" --,  style "padding" "10px" 
                 ]
