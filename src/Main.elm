@@ -162,8 +162,8 @@ view model =
     { title = "JustEat"
     , body = 
         [ 
-            div[class "container"][svgLogo]
-            , div [ class "has-text-centered"]
+            div[class "container"][svgLogo , svgBackground]
+                , div [ class "has-text-centered"]
                       [ br[][] 
                       , headview model
                       , br[][]
@@ -185,11 +185,11 @@ view model =
                                 , br[][]
                                 , text "Please enter one ingredient from your fridge to get cooking ideas! "
                                 ]
-            ]
-            ,div[class "container"][svgBackground]
+                        ]
+                ]
                 
              
-        ]
+        
     }
 
 entertoGetIngredients : Model -> Html Msg
@@ -217,14 +217,15 @@ headview model =
 
 svgBackground : Html Msg
 svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
-                   [rect[x "0", y "0", width "200", height "200", fill "orange"][]
-                   , image[x "0", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.8"][]
+                   [rect[x "0", y "0", width "200", height "200",fill "none", stroke "black"][]
+                   --, 
+                   ,image[x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65"][]
                    ]
 
 svgBox : Html Msg
 svgBox =
     svg [ SA.width "420", SA.height "420", viewBox "0 0 550 550" ]
-        [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] []
+        [-- rect [ x "10", y "10", SA.width "500", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] []
         --, S.image [ x "200", y "200", SA.width "140", SA.height "140", SA.xlinkHref "http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"] []
         --, S.image [x "50", y"10", SA.width "100" ,SA.height "180",  SA.xlinkHref "docs/logo.png"][]
         --, svgLogo
@@ -244,10 +245,10 @@ svgBox =
 
 svgLogo : Html Msg
 svgLogo =
-    svg [ width "100%", height "150", viewBox "0 0 90 90" , style "background" "orange"]
-        [ --rect [x "0", y "0", width "100", height "100", stroke "black" , strokeWidth"3", fill "none"][]
+    svg [ width "100%", height "150", viewBox "0 0 100 100" , style "background" "orange", stoke "black"]
+        [ rect [x "0", y "0", width "100", height "150", stroke "black" , fill "none"][]
         --, 
-        image [ x "0", y"0", width "128", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] 
+        , image [ x "0", y"0", width "128", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] 
         ]
 
 introduction : Html Msg
