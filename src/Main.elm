@@ -10,7 +10,7 @@ import Html.Events exposing (onClick, onInput)
 import Json.Decode as Decode
 
 import Svg as S exposing (svg, rect, image, text_)
-import Svg.Attributes as SA exposing (width, height, viewBox, x, y, fill , stroke, strokeWidth, xlinkHref, fontSize, textAnchor, dy )
+import Svg.Attributes as SA exposing (width, height, viewBox, x, y, fill , stroke, strokeWidth, xlinkHref, fontSize, textAnchor, dy, opacity )
 import Svg exposing (foreignObject)
 
 
@@ -162,29 +162,33 @@ view model =
     { title = "JustEat"
     , body = 
         [ 
-            div[][svgLogo
-             ,div [ class "has-text-centered"]
-                  [ headview model
-                  , entertoGetIngredients model
-                  , if model.ingredients /= "" && not (List.isEmpty model.recipes) then   --if ingredients wont get any input and recipe still empty
-                        case model.selectedRecipe of
-                            Nothing ->
-                                recipesTable model.recipes
-                            Just recipe ->
-                                div []
-                                [ button [ onClick DeselectRecipe ] [ text "Back to Recipes" ]
-                                , h2 [] [ text recipe.label ]
-                                , ul [] (List.map ingredientItem recipe.ingredients)
-                                , a [ href recipe.url ] [ text "Go to recipe" ]
+            div[class "container"][svgLogo]
+            , div [ class "has-text-centered"]
+                      [ br[][] 
+                      , headview model
+                      , br[][]
+                      , entertoGetIngredients model
+                      , if model.ingredients /= "" && not (List.isEmpty model.recipes) then   --if ingredients wont get any input and recipe still empty
+                            case model.selectedRecipe of
+                                Nothing ->
+                                    recipesTable model.recipes
+                                Just recipe ->
+                                    div []
+                                        [ button [ onClick DeselectRecipe ] [ text "Back to Recipes" ]
+                                    , h2 [] [ text recipe.label ]
+                                    , ul [] (List.map ingredientItem recipe.ingredients)
+                                    , a [ href recipe.url ] [ text "Go to recipe" ]
+                                    ]
+                        else
+                            div[][br[][]
+                                , text "Ready to find recipes?"
+                                , br[][]
+                                , text "Please enter one ingredient from your fridge to get cooking ideas! "
                                 ]
-                    else
-                       div[][br[][]
-                            , text "Ready to find recipes?"
-                            , br[][]
-                            , text "Please enter one ingredient from your fridge to get cooking ideas! "
-                            ]
-                    ]
-             ]
+            ]
+            ,div[class "container"][svgBackground]
+                
+             
         ]
     }
 
@@ -211,15 +215,21 @@ headview model =
 
 --Design
 
+svgBackground : Html Msg
+svgBackground = svg[width "100%", height "100%", viewBox "0 0 200 200"]
+                   [rect[x "0", y "0", width "200", height "200", fill "orange"][]
+                   , image[x "0", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.8"][]
+                   ]
+
 svgBox : Html Msg
 svgBox =
-    svg [ SA.width "420", SA.height "420", viewBox "0 0 400 400" ]
+    svg [ SA.width "420", SA.height "420", viewBox "0 0 550 550" ]
         [ --rect [ x "10", y "10", SA.width "180", SA.height "180", fill "none", stroke "black", strokeWidth "3" ] []
         --, S.image [ x "200", y "200", SA.width "140", SA.height "140", SA.xlinkHref "http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"] []
         --, S.image [x "50", y"10", SA.width "100" ,SA.height "180",  SA.xlinkHref "docs/logo.png"][]
         --, svgLogo
         --, 
-        foreignObject [ x "0", y "0", width "400" , height "400"]
+        foreignObject [ x "0", y "0", width "500" , height "500"]
             [ div [ --class "has-text-centered" , style "background" "white", style "padding" "10px" 
                     class "has-text-centered" --,  style "padding" "10px" 
                 ]
