@@ -6457,9 +6457,9 @@ var $author$project$Main$svgBox = A2(
 	$elm$svg$Svg$svg,
 	_List_fromArray(
 		[
-			$elm$svg$Svg$Attributes$width('420'),
-			$elm$svg$Svg$Attributes$height('420'),
-			$elm$svg$Svg$Attributes$viewBox('0 0 550 550')
+			$elm$svg$Svg$Attributes$width('1000'),
+			$elm$svg$Svg$Attributes$height('300'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 300 300')
 		]),
 	_List_fromArray(
 		[
@@ -6467,10 +6467,10 @@ var $author$project$Main$svgBox = A2(
 			$elm$svg$Svg$foreignObject,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$x('-150'),
 					$elm$svg$Svg$Attributes$y('0'),
-					$elm$svg$Svg$Attributes$width('500'),
-					$elm$svg$Svg$Attributes$height('500')
+					$elm$svg$Svg$Attributes$width('600'),
+					$elm$svg$Svg$Attributes$height('300')
 				]),
 			_List_fromArray(
 				[
@@ -6689,24 +6689,16 @@ var $author$project$Main$conten = function (model) {
 								]));
 					}
 				} else {
-					return A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A2($elm$html$Html$br, _List_Nil, _List_Nil),
-								$elm$html$Html$text('Ready to find recipes?'),
-								A2($elm$html$Html$br, _List_Nil, _List_Nil),
-								$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
-							]));
+					return A2($elm$html$Html$div, _List_Nil, _List_Nil);
 				}
 			}()
 			]));
 };
+var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
 var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
+var $elm$svg$Svg$Attributes$opacity = _VirtualDom_attribute('opacity');
+var $elm$svg$Svg$rect = $elm$svg$Svg$trustedNode('rect');
 var $elm$svg$Svg$Attributes$stroke = _VirtualDom_attribute('stroke');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
 	return A3(
 		_VirtualDom_attributeNS,
@@ -6714,11 +6706,48 @@ var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
 		'xlink:href',
 		_VirtualDom_noJavaScriptUri(value));
 };
+var $author$project$Main$svgBackground = A2(
+	$elm$svg$Svg$svg,
+	_List_fromArray(
+		[
+			$elm$svg$Svg$Attributes$width('100%'),
+			$elm$svg$Svg$Attributes$height('100%'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 200 200')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$svg$Svg$rect,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$x('0'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('200'),
+					$elm$svg$Svg$Attributes$height('200'),
+					$elm$svg$Svg$Attributes$fill('none'),
+					$elm$svg$Svg$Attributes$stroke('black')
+				]),
+			_List_Nil),
+			A2(
+			$elm$svg$Svg$image,
+			_List_fromArray(
+				[
+					$elm$svg$Svg$Attributes$x('50'),
+					$elm$svg$Svg$Attributes$y('0'),
+					$elm$svg$Svg$Attributes$width('100'),
+					$elm$svg$Svg$Attributes$height('100'),
+					$elm$svg$Svg$Attributes$xlinkHref('docs/logobg.png'),
+					$elm$svg$Svg$Attributes$opacity('0.65')
+				]),
+			_List_Nil)
+		]));
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Main$svgLogo = A2(
 	$elm$svg$Svg$svg,
 	_List_fromArray(
 		[
-			$elm$svg$Svg$Attributes$width('100'),
+			$elm$svg$Svg$Attributes$width('100%'),
 			$elm$svg$Svg$Attributes$height('150'),
 			$elm$svg$Svg$Attributes$viewBox('0 0 90 90'),
 			A2($elm$html$Html$Attributes$style, 'background', 'orange')
@@ -6729,9 +6758,9 @@ var $author$project$Main$svgLogo = A2(
 			$elm$svg$Svg$image,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('0'),
-					$elm$svg$Svg$Attributes$y('0'),
-					$elm$svg$Svg$Attributes$width('128'),
+					$elm$svg$Svg$Attributes$x('-400'),
+					$elm$svg$Svg$Attributes$y('-10'),
+					$elm$svg$Svg$Attributes$width('130'),
 					$elm$svg$Svg$Attributes$height('128'),
 					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
 					$elm$svg$Svg$Attributes$stroke('black')
@@ -6742,6 +6771,7 @@ var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
+				$author$project$Main$svgLogo,
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -6750,8 +6780,24 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$author$project$Main$svgLogo,
-						$author$project$Main$conten(model)
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('background')
+							]),
+						_List_fromArray(
+							[$author$project$Main$svgBackground])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('content box')
+							]),
+						_List_fromArray(
+							[
+								$author$project$Main$conten(model)
+							]))
 					]))
 			]),
 		title: 'JustEat'
