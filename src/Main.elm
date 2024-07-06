@@ -159,37 +159,15 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "JustEat"
     , body = 
-        [   svgLogo
+        [ 
            -- ,div [ style "width" "100%", style "height" "100%" ]
              -- [ div [  style "width" "100%", style "height" "100%" ][ svgBackground]
             --, div[class "content box"][ conten model]
               --]
-              , div [ class "container" ]
-                [ div [ class "background" ] [ svgBackground ]
-                , div [ class "content box" ] -- Added Bulma's 'box' class for styling
-            [ conten model]
-        ]
-
-            
-      
-                     
-         -- div[class "has-text-centered"][footView]        
-        ]
-        
-                
-             
-        
-    }
-
-footView: Html Msg
-footView =  div[][text "Ready to find recipes?"
-                , br[][]
-                , text "Please enter one ingredient from your fridge to get cooking ideas! "
-                ] 
-conten : Model -> Html Msg
-conten model =    
-        div [ class "has-text-centered content"]
-                      [ br[][] 
+            div [ class "container" ] 
+                [ svgLogo 
+                --, svgBackground ]
+                , div[class "content has-text-centered"][br[][] 
                       , headview model
                       , br[][]
                       , entertoGetIngredients model
@@ -205,9 +183,27 @@ conten model =
                                     , a [ href recipe.url ] [ text "Go to recipe" ]
                                     ]
                         else 
-                            div[][]
-                            
-                        ]
+                            div[][br[][], footView]
+                ]
+
+            ]
+                
+
+        
+                     
+         -- div[class "has-text-centered"][footView]        
+        ]
+        
+                
+             
+        
+    }
+
+footView: Html Msg
+footView =  div[][text "Ready to find recipes?"
+                , br[][]
+                , text "Please enter one ingredient from your fridge to get cooking ideas! "
+                ] 
         
 
 entertoGetIngredients : Model -> Html Msg
@@ -218,7 +214,6 @@ entertoGetIngredients model =
             , br[][]
             , button [ class "button is-warning", onClick FetchRecipes ] [ text "Get Recipes" ]
             ]
-
 
 headview : Model -> Html Msg
 headview model = 
@@ -231,31 +226,11 @@ headview model =
         ]
 
 
+
 --Design
 
 --vgbgToHtmlAttribute : string
 --svgbgToHtmlAttribute = 
-svgBackground1 : Html Msg
-svgBackground1 =
-         div[class "svg-background"]
-        [ svg [ width "100%", height "100%", viewBox "0 0 200 200" ]
-            [ rect [ x "0", y "0", width "200", height "200", fill "none", stroke "black" ] []
-            , Svg.image [ x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65" ] []
-            ]
-
-         ]
-         
-        
-
-svgBackground : S.Svg msg
-svgBackground =
-         svg [ width "100%", height "100%", viewBox "0 0 200 200" ]
-            [ rect [ x "0", y "0", width "200", height "200", fill "none", stroke "black" ] []
-            , Svg.image [ x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65" ] []
-            ]
-        
-
-
 
 svgBox : Html Msg
 svgBox =
@@ -265,14 +240,29 @@ svgBox =
         --, text_ [ x "100", y "100", fontSize "20", textAnchor "middle", fill "black", dy ".3em" ][ introduction ]
          --,img[href ""http://www.informatik.uni-halle.de/im/1285058520_1381_00_800.jpg"][]
         ]
+        
+
+svgBackground :  S.Svg msg
+svgBackground =
+         svg [ width "100%", height "100%", viewBox "0 0 200 200" ]
+            [ --rect [ x "0", y "0", width "200", height "200", fill "none", stroke "black" ] []
+            --, 
+            Svg.image [ x "50", y "0", width "100", height "100", xlinkHref "docs/logobg.png", opacity "0.65" ] []
+            --, foreignObject[ x "50", y "100", width "100", height "100" ][ div [ ] [conten] ]
+            ]
+        
+
+
+
+
 --logo : Html Msg
 --logo =
   --   img [ class "is-round image is-96x96", src "docs/logo.png" ] [] 
 
 svgLogo : Html Msg
 svgLogo =
-    svg [ width "100%", height "150", viewBox "0 0 90 90" , style "background" "orange"]
-        [image [ x "-400", y"-10", width "130", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] ]
+    svg [ width "100%", height "120", viewBox "0 0 100 100" , style "background" "orange"]
+        [image [ x "-500", y"-5", width "200", height "128", xlinkHref "docs/logo.png" , stroke "black"] [] ]
 
 introduction : Html Msg
 introduction =

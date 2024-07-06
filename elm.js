@@ -6292,6 +6292,10 @@ var $author$project$Main$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Main$DeselectRecipe = {$: 'DeselectRecipe'};
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -6301,10 +6305,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $author$project$Main$DeselectRecipe = {$: 'DeselectRecipe'};
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$br = _VirtualDom_node('br');
-var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Main$FetchRecipes = {$: 'FetchRecipes'};
 var $author$project$Main$UpdateIngredients = function (a) {
@@ -6393,6 +6393,15 @@ var $author$project$Main$entertoGetIngredients = function (model) {
 					]))
 			]));
 };
+var $author$project$Main$footView = A2(
+	$elm$html$Html$div,
+	_List_Nil,
+	_List_fromArray(
+		[
+			$elm$html$Html$text('Ready to find recipes?'),
+			A2($elm$html$Html$br, _List_Nil, _List_Nil),
+			$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
+		]));
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $author$project$Main$ToggleBox = {$: 'ToggleBox'};
 var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
@@ -6629,75 +6638,10 @@ var $author$project$Main$recipesTable = function (recipes) {
 				A2($elm$core$List$map, $author$project$Main$recipeRow, recipes))
 			]));
 };
-var $elm$html$Html$ul = _VirtualDom_node('ul');
-var $author$project$Main$conten = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('has-text-centered content')
-			]),
-		_List_fromArray(
-			[
-				A2($elm$html$Html$br, _List_Nil, _List_Nil),
-				$author$project$Main$headview(model),
-				A2($elm$html$Html$br, _List_Nil, _List_Nil),
-				$author$project$Main$entertoGetIngredients(model),
-				function () {
-				if ((model.ingredients !== '') && (!$elm$core$List$isEmpty(model.recipes))) {
-					var _v0 = model.selectedRecipe;
-					if (_v0.$ === 'Nothing') {
-						return $author$project$Main$recipesTable(model.recipes);
-					} else {
-						var recipe = _v0.a;
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Back to Recipes')
-										])),
-									A2(
-									$elm$html$Html$h2,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$elm$html$Html$text(recipe.label)
-										])),
-									A2(
-									$elm$html$Html$ul,
-									_List_Nil,
-									A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients)),
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href(recipe.url)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Go to recipe')
-										]))
-								]));
-					}
-				} else {
-					return A2($elm$html$Html$div, _List_Nil, _List_Nil);
-				}
-			}()
-			]));
-};
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
 var $elm$svg$Svg$Attributes$stroke = _VirtualDom_attribute('stroke');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$svg$Svg$Attributes$xlinkHref = function (value) {
 	return A3(
 		_VirtualDom_attributeNS,
@@ -6710,8 +6654,8 @@ var $author$project$Main$svgLogo = A2(
 	_List_fromArray(
 		[
 			$elm$svg$Svg$Attributes$width('100%'),
-			$elm$svg$Svg$Attributes$height('150'),
-			$elm$svg$Svg$Attributes$viewBox('0 0 90 90'),
+			$elm$svg$Svg$Attributes$height('120'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 100 100'),
 			A2($elm$html$Html$Attributes$style, 'background', 'orange')
 		]),
 	_List_fromArray(
@@ -6720,40 +6664,97 @@ var $author$project$Main$svgLogo = A2(
 			$elm$svg$Svg$image,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('-400'),
-					$elm$svg$Svg$Attributes$y('-10'),
-					$elm$svg$Svg$Attributes$width('130'),
+					$elm$svg$Svg$Attributes$x('-500'),
+					$elm$svg$Svg$Attributes$y('-5'),
+					$elm$svg$Svg$Attributes$width('200'),
 					$elm$svg$Svg$Attributes$height('128'),
 					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
 					$elm$svg$Svg$Attributes$stroke('black')
 				]),
 			_List_Nil)
 		]));
+var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
-				$author$project$Main$svgLogo,
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('container'),
-						A2($elm$html$Html$Attributes$style, 'background-image', 'url(\'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 200 200\'><rect x=\'0\' y=\'0\' width=\'200\' height=\'200\' fill=\'none\' stroke=\'black\'/><image x=\'50\' y=\'0\' width=\'100\' height=\'100\' xlink:href=\'docs/logobg.png\' opacity=\'0.65\'/></svg>\')'),
-						A2($elm$html$Html$Attributes$style, 'background-size', 'cover'),
-						A2($elm$html$Html$Attributes$style, 'background-position', 'center')
+						$elm$html$Html$Attributes$class('container')
 					]),
 				_List_fromArray(
 					[
+						$author$project$Main$svgLogo,
 						A2(
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('content box')
+								$elm$html$Html$Attributes$class('content has-text-centered')
 							]),
 						_List_fromArray(
 							[
-								$author$project$Main$conten(model)
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								$author$project$Main$headview(model),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								$author$project$Main$entertoGetIngredients(model),
+								function () {
+								if ((model.ingredients !== '') && (!$elm$core$List$isEmpty(model.recipes))) {
+									var _v0 = model.selectedRecipe;
+									if (_v0.$ === 'Nothing') {
+										return $author$project$Main$recipesTable(model.recipes);
+									} else {
+										var recipe = _v0.a;
+										return A2(
+											$elm$html$Html$div,
+											_List_Nil,
+											_List_fromArray(
+												[
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Events$onClick($author$project$Main$DeselectRecipe)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('Back to Recipes')
+														])),
+													A2(
+													$elm$html$Html$h2,
+													_List_Nil,
+													_List_fromArray(
+														[
+															$elm$html$Html$text(recipe.label)
+														])),
+													A2(
+													$elm$html$Html$ul,
+													_List_Nil,
+													A2($elm$core$List$map, $author$project$Main$ingredientItem, recipe.ingredients)),
+													A2(
+													$elm$html$Html$a,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$href(recipe.url)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('Go to recipe')
+														]))
+												]));
+									}
+								} else {
+									return A2(
+										$elm$html$Html$div,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2($elm$html$Html$br, _List_Nil, _List_Nil),
+												$author$project$Main$footView
+											]));
+								}
+							}()
 							]))
 					]))
 			]),

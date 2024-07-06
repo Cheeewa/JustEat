@@ -6694,6 +6694,15 @@ var $author$project$Main$conten = function (model) {
 			}()
 			]));
 };
+var $author$project$Main$footView = A2(
+	$elm$html$Html$div,
+	_List_Nil,
+	_List_fromArray(
+		[
+			$elm$html$Html$text('Ready to find recipes?'),
+			A2($elm$html$Html$br, _List_Nil, _List_Nil),
+			$elm$html$Html$text('Please enter one ingredient from your fridge to get cooking ideas! ')
+		]));
 var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
 var $elm$svg$Svg$image = $elm$svg$Svg$trustedNode('image');
 var $elm$svg$Svg$Attributes$opacity = _VirtualDom_attribute('opacity');
@@ -6748,8 +6757,8 @@ var $author$project$Main$svgLogo = A2(
 	_List_fromArray(
 		[
 			$elm$svg$Svg$Attributes$width('100%'),
-			$elm$svg$Svg$Attributes$height('150'),
-			$elm$svg$Svg$Attributes$viewBox('0 0 90 90'),
+			$elm$svg$Svg$Attributes$height('120'),
+			$elm$svg$Svg$Attributes$viewBox('0 0 100 100'),
 			A2($elm$html$Html$Attributes$style, 'background', 'orange')
 		]),
 	_List_fromArray(
@@ -6758,9 +6767,9 @@ var $author$project$Main$svgLogo = A2(
 			$elm$svg$Svg$image,
 			_List_fromArray(
 				[
-					$elm$svg$Svg$Attributes$x('-400'),
-					$elm$svg$Svg$Attributes$y('-10'),
-					$elm$svg$Svg$Attributes$width('130'),
+					$elm$svg$Svg$Attributes$x('-500'),
+					$elm$svg$Svg$Attributes$y('-5'),
+					$elm$svg$Svg$Attributes$width('200'),
 					$elm$svg$Svg$Attributes$height('128'),
 					$elm$svg$Svg$Attributes$xlinkHref('docs/logo.png'),
 					$elm$svg$Svg$Attributes$stroke('black')
@@ -6771,7 +6780,6 @@ var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
-				$author$project$Main$svgLogo,
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
@@ -6780,23 +6788,18 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
+						$author$project$Main$svgLogo,
+						$author$project$Main$svgBackground,
 						A2(
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('background')
-							]),
-						_List_fromArray(
-							[$author$project$Main$svgBackground])),
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('content box')
+								$elm$html$Html$Attributes$class('content')
 							]),
 						_List_fromArray(
 							[
-								$author$project$Main$conten(model)
+								$author$project$Main$conten(model),
+								$author$project$Main$footView
 							]))
 					]))
 			]),
